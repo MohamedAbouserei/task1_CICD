@@ -5,13 +5,23 @@ registry = "mohamedabouserei/task1_cicd"
 registryCredential = 'mohamedabouserei'
 dockerImage = ''
 }
-agent any
+agent { docker { image 'python:3.7.2' } }
 stages {
 stage('Cloning our Git') {
 steps {
 git 'https://github.com/MohamedAbouserei/task1_CICD.git'
 }
 }
+stage('build') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+    stage('test') {
+      steps {
+        sh 'python tests/test.py'
+      }   
+    }
 stage('Building our image') {
 steps{
 script {
