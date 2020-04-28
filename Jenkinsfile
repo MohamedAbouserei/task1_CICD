@@ -1,4 +1,3 @@
-
 pipeline {
 environment {
 registry = "mohamedabouserei/task1_cicd"
