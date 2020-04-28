@@ -5,7 +5,7 @@ registry = "mohamedabouserei/task1_cicd"
 registryCredential = 'mohamedabouserei'
 dockerImage = ''
 }
-agent { docker { image 'python:3.7.2' } }
+agent {any, docker { image 'python:3.7.2' } }
 stages {
 stage('Cloning our Git') {
 steps {
