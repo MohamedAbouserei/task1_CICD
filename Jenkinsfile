@@ -45,8 +45,10 @@ sh "docker rmi $registry:$BUILD_NUMBER"
 }
 stage('Ec2 Deploy') {
 steps{
-sh "ssh  ec2-user@ec2-18-191-146-246.us-east-2.compute.amazonaws.com"  
+sh "ssh ec2-user@ec2-18-191-146-246.us-east-2.compute.amazonaws.com"  
 sh "docker pull $registry:$BUILD_NUMBER"
+sh "docker container run --name jenkins2 -d -p 8080:8080 $registry:$BUILD_NUMBER"
+
 }
 }
 }
